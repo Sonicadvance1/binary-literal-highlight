@@ -1,7 +1,11 @@
 " Vim syntax file
 " Language: C++ Additions
 
-syn match    cCustomLiteral  "0b"
-syn match    cCustomLiteralName "0b\w\+\s*" contains=cCustomliteral
+" Flag correct literals
+syn match    cLiteral "0b[01]\d*"
+"
+" Flag a literal with wrong values
+syn match    cLiteralError "0b\o*[23456789]\d*"
 
-hi def link cCustomLiteralName cppSTLconstant
+hi def link cLiteral      Number
+hi def link cLiteralError Error
